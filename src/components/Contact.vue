@@ -2,19 +2,20 @@
   <v-container fluid>
     <v-layout column>
       <v-flex xs12 class="custom-filters">
-        {{$t('merchant_index_title')}}
-        <v-flex xs3>
-          <v-select
-            class="pt-0"
-            :items="merchants"
-            v-model="filters.merchant_id"
-            label="Nhà xe"
-            single-line
-            item-text="name"
-            item-value="id"
-            @change="filter"
-          ></v-select>
-        </v-flex>
+        <v-layout row wrap>
+          <v-flex xs3>
+            <v-select
+              class="pt-0"
+              :items="merchants"
+              v-model="filters.merchant_id"
+              label="Nhà xe"
+              single-line
+              item-text="name"
+              item-value="id"
+              @change="filter"
+            ></v-select>
+          </v-flex>
+        </v-layout>
       </v-flex>
       <gs-table
         :ref="nodeTable"

@@ -26,18 +26,24 @@
       <v-spacer></v-spacer>
       <v-menu offset-y>
         <v-btn icon slot="activator">
-          <v-icon>language</v-icon>
+          <img size="24px" tile :src="`../static/flag-${currentLocale}.png`">
         </v-btn>
         <v-list>
           <v-list-tile @click="changeLocale('vi')">
-            <v-list-tile-title>
-              Tiếng Việt
-            </v-list-tile-title>
+            <v-list-tile-avatar size="24px" tile>
+              <img src="../assets/flag-vi.png">
+            </v-list-tile-avatar>
+            <v-list-tile-content>
+              <v-list-tile-title>Tiếng Việt</v-list-tile-title>
+            </v-list-tile-content>
           </v-list-tile>
           <v-list-tile @click="changeLocale('en')">
-            <v-list-tile-title>
-              Tiếng Anh
-            </v-list-tile-title>
+            <v-list-tile-avatar size="24px" tile>
+              <img src="../assets/flag-en.png">
+            </v-list-tile-avatar>
+            <v-list-tile-content>
+              <v-list-tile-title>Tiếng Anh</v-list-tile-title>
+            </v-list-tile-content>
           </v-list-tile>
         </v-list>
       </v-menu>
@@ -57,7 +63,7 @@
         <v-list>
           <v-list-tile @click="logout">
             <v-list-tile-title>
-              <v-icon small>fa-sign-out</v-icon> Logout
+              <v-icon small>input</v-icon> Logout
             </v-list-tile-title>
           </v-list-tile>
         </v-list>
@@ -111,6 +117,9 @@
       pageTagsList () {
         return this.$store.state.app.pageOpenedList
       },
+      currentLocale () {
+        return this.$i18n.locale
+      },
       ...mapGetters('account', ['accountInfo'])
     },
     components: {
@@ -143,7 +152,6 @@
       changeLocale (locale) {
         this.$i18n.locale = locale
         Validator.localize(locale)
-        console.log(locale)
         ls.set('lang', locale)
         util.setCurrentPath(this, this.$route.name)
       },

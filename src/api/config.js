@@ -55,7 +55,7 @@ axios.interceptors.response.use(response => {
     }
   }
   if (response.status === 403) {
-    router.push({name: 'permission-denied'})
+    router.push({name: 'error-403'})
   }
   // if (response.headers && response.headers.Authorization) {
   //   ls.set('authen', response.headers.Authorization)

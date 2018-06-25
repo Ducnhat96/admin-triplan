@@ -1,5 +1,25 @@
 import Main from '@/components/Main'
 
+import accountRoutes from '@/components/account/routes'
+
+export const page403 = {
+  path: '/403',
+  meta: {
+    title: '403-Bạn không được phép'
+  },
+  name: 'error-403',
+  component: () => import('@/components/error-page/403')
+}
+
+export const page404 = {
+  path: '/*',
+  meta: {
+    title: '404-Trang không tồn tại'
+  },
+  name: 'error-404',
+  component: () => import('@/components/error-page/404')
+}
+
 export const otherRouter = {
   path: '/',
   name: 'otherRouter',
@@ -9,6 +29,15 @@ export const otherRouter = {
     { path: 'home', title: 'Trang chủ', name: 'home_index', component: () => import('@/components/Home.vue') },
     { path: 'contact', title: 'Contact', name: 'contact', component: () => import('@/components/Contact.vue') }
   ]
+}
+
+export const page500 = {
+  path: '/500',
+  meta: {
+    title: '500-Lỗi máy chủ'
+  },
+  name: 'error-500',
+  component: () => import('@/components/error-page/500.vue')
 }
 
 export const appRouter = [
@@ -28,5 +57,9 @@ export const appRouter = [
 
 export const routers = [
   otherRouter,
-  ...appRouter
+  ...accountRoutes,
+  ...appRouter,
+  page403,
+  page500,
+  page404
 ]

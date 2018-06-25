@@ -98,7 +98,7 @@ export default {
                 break
               case 422:
                 let er = response.data.errors
-                let message = head(er[Object.keys(er)[0]])
+                let message = head(er) ? head(er) : head(er[Object.keys(er)[0]])
                 this.$store.dispatch('showNotify', {
                   title: 'Cảnh báo',
                   body: message,

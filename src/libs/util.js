@@ -90,7 +90,7 @@ util.setCurrentPath = function (vm, name) {
     if (currentPathObj.children.length <= 1 && currentPathObj.name === 'home') {
       currentPathArr = [
         {
-          title: 'Trang chủ',
+          title: util.handleTitle(vm, util.getRouterObjByName(vm.$store.state.app.routers, 'home_index')),
           path: '',
           name: 'home_index'
         }
@@ -98,12 +98,12 @@ util.setCurrentPath = function (vm, name) {
     } else if (currentPathObj.children.length <= 1 && currentPathObj.name !== 'home') {
       currentPathArr = [
         {
-          title: 'Trang chủ',
+          title: util.handleTitle(vm, util.getRouterObjByName(vm.$store.state.app.routers, 'home_index')),
           path: '/home',
           name: 'home_index'
         },
         {
-          title: currentPathObj.title,
+          title: util.handleTitle(vm, currentPathObj),
           path: '',
           name: name,
           disabled: true
@@ -113,19 +113,20 @@ util.setCurrentPath = function (vm, name) {
       let childObj = currentPathObj.children.filter((child) => {
         return child.name === name
       })[0]
+      console.log(currentPathObj)
       currentPathArr = [
         {
-          title: 'Trang chủ',
+          title: util.handleTitle(vm, util.getRouterObjByName(vm.$store.state.app.routers, 'home_index')),
           path: '/home',
           name: 'home_index'
         },
         {
-          title: currentPathObj.title,
+          title: util.handleTitle(vm, currentPathObj),
           path: currentPathObj.path + '/' + 'index',
           name: currentPathObj.name
         },
         {
-          title: childObj.title,
+          title: util.handleTitle(vm, childObj),
           path: currentPathObj.path + '/' + childObj.path,
           name: name,
           disabled: true
@@ -155,7 +156,6 @@ util.openNewPage = function (vm, name, argu, query) {
     i++
   }
   if (!tagHasOpened) {
-    console.log(vm.$store.state.app.tagsList)
     let tag = vm.$store.state.app.tagsList.filter((item) => {
       if (item.children) {
         return name === item.children[0].name
@@ -163,7 +163,6 @@ util.openNewPage = function (vm, name, argu, query) {
         return name === item.name
       }
     })
-    console.log(tag)
     tag = tag[0]
     if (tag) {
       tag = tag.children ? tag.children[0] : tag

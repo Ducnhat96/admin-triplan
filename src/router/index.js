@@ -15,7 +15,6 @@ import store from '@/store'
  * -----------------------------------------------------------------------------------------------------------
  */
 import { routers } from './router'
-import accountRoutes from '@/components/account/routes'
 
 Vue.use(VueRouter)
 
@@ -29,8 +28,7 @@ const router = new VueRouter({
   mode: 'history',
   scrollBehavior: () => ({ y: 0 }), // Chuyen trang thi scroll ve top
   routes: concat(
-    routers,
-    accountRoutes
+    routers
   )
 })
 

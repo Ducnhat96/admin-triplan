@@ -20,9 +20,10 @@ import '@/api/config'
 import { vi } from '@/models/commons/mc/locale'
 import GsTable from '@/components/app/gsTable/GsTable'
 import gsTableHelper from '@/components/app/gsTable/mixins'
-import validateMessages from '@/locale/validates'
-import i18n from '@/locale'
+// Import library locale
 import ls from './libs/ls'
+import i18n from '@/locale'
+import validateMessages from '@/locale/validates'
 
 sync(store, router)
 
@@ -36,6 +37,7 @@ const options = {
 Vue.$snotify = Snotify
 Vue.use(Snotify, options)
 Vue.use(vueTopprogress)
+// Config locale validate
 Vue.use(VeeValidate, {
   locale: ls.get('lang', 'vi'),
   dictionary: validateMessages
