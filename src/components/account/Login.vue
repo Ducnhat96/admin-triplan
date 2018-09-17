@@ -25,7 +25,7 @@
                     <v-text-field
                       :error-messages="errors.has('password') ? errors.collect('password') : []"
                       prepend-icon="lock"
-                      v-validate="'required|min:6'"
+                      v-validate="'required|min:4'"
                       data-vv-as="Mật khẩu"
                       name="password"
                       label="Mật khẩu"

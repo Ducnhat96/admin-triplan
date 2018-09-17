@@ -20,7 +20,7 @@
       <gs-table
         :ref="nodeTable"
         :table-name="nodeTable"
-        data-source="nodes"
+        data-source="bookings"
         :data-params="filters"
         :data-sorted="sorted"
         :data-sorts="sorts"
@@ -32,7 +32,7 @@
           <tr>
             <td><small v-if="dataPaginations[nodeTable]">{{(index + 1) + ((dataPaginations[nodeTable].current_page -1) * dataPaginations[nodeTable].per_page)}}</small></td>
             <td>{{ item.id }}</td>
-            <td>{{ item.start_time }}</td>
+            <td>{{ item.name }}</td>
             <td>{{ item.start_time }}</td>
             <td>{{ item.start_time }}</td>
             <td>{{ item.start_time }}</td>
@@ -61,7 +61,7 @@ export default {
 
   data () {
     return {
-      nodeTable: 'nodes',
+      nodeTable: 'bookings',
       headers: [
         {
           text: '#',
@@ -160,7 +160,7 @@ export default {
       ls.remove('filters')
       ls.set('doFilter', true)
     } else {
-      if (ls.get('filters') && ls.get('filters')['nodes']) {
+      if (ls.get('filters') && ls.get('filters')['bookings']) {
         ls.set('doFilter', false)
       } else {
         ls.set('doFilter', true)
